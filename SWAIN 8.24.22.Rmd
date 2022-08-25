@@ -1,0 +1,283 @@
+---
+title: "Swain Data"
+author: "Adam Bretton"
+date: "2022-08-22"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+# Import Data
+
+#### Clear Workspace: "rm(list = ls())"
+
+```{r}
+rm(list = ls())
+```
+
+#### Import readxl Package
+
+```{r}
+library(readxl)
+```
+
+#### Import Data \| The data was cleaned via a hybrid of JMP-R and Excel. The original data and formulas used can be found in appendix a
+
+```{r}
+TIDESDATA8_16_22 <- read_excel("~/Desktop/NCUR 2023/TIDESDATA8.16.22.xlsx", 
+    sheet = "Data")
+```
+
+# \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+# Cleaning & Recoding Data
+
+#### Binge Eating Screen
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Binge 1=y` into TIDESDATA8_16_22$`Binge Eating Screen`
+TIDESDATA8_16_22$`Binge Eating Screen` <- as.character(TIDESDATA8_16_22$`Binge 1=y`)
+TIDESDATA8_16_22$`Binge Eating Screen`[TIDESDATA8_16_22$`Binge 1=y` == "1"] <- "Positive"
+```
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Binge Eating Screen`
+TIDESDATA8_16_22$`Binge Eating Screen`[is.na(TIDESDATA8_16_22$`Binge Eating Screen`)] <- "Negative"
+```
+
+#### Bulimia Eating Screen
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Bulimia 1=y` into TIDESDATA8_16_22$`Bulimia Eating Screen`
+TIDESDATA8_16_22$`Bulimia Eating Screen` <- as.character(TIDESDATA8_16_22$`Bulimia 1=y`)
+TIDESDATA8_16_22$`Bulimia Eating Screen`[TIDESDATA8_16_22$`Bulimia 1=y` == "1"] <- "Positive"
+```
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Bulimia Eating Screen`
+TIDESDATA8_16_22$`Bulimia Eating Screen`[is.na(TIDESDATA8_16_22$`Bulimia Eating Screen`)] <- "Negative"
+```
+
+#### Anorexia Eating Screen
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Anorexia 1=y` into TIDESDATA8_16_22$`Anorexia Eating Screen`
+TIDESDATA8_16_22$`Anorexia Eating Screen` <- as.character(TIDESDATA8_16_22$`Anorexia 1=y`)
+TIDESDATA8_16_22$`Anorexia Eating Screen`[TIDESDATA8_16_22$`Anorexia 1=y` == "1"] <- "Positive"
+```
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Anorexia Eating Screen`
+TIDESDATA8_16_22$`Anorexia Eating Screen`[is.na(TIDESDATA8_16_22$`Anorexia Eating Screen`)] <- "Negative"
+```
+
+#### Anorexia Eating Screen
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Anorexia 1=y` into TIDESDATA8_16_22$`Anorexia Eating Screen`
+TIDESDATA8_16_22$`Anorexia Eating Screen` <- as.character(TIDESDATA8_16_22$`Anorexia 1=y`)
+TIDESDATA8_16_22$`Anorexia Eating Screen`[TIDESDATA8_16_22$`Anorexia 1=y` == "1"] <- "Positive"
+```
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Anorexia Eating Screen`
+TIDESDATA8_16_22$`Anorexia Eating Screen`[is.na(TIDESDATA8_16_22$`Anorexia Eating Screen`)] <- "Negative"
+```
+
+#### Purging Screen
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Purging 1=y` into TIDESDATA8_16_22$`Purging  Screen`
+TIDESDATA8_16_22$`Purging Screen` <- as.character(TIDESDATA8_16_22$`Purging 1=y`)
+TIDESDATA8_16_22$`Purging Screen`[TIDESDATA8_16_22$`Purging 1=y` == "1"] <- "Positive"
+```
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Purging Screen`
+TIDESDATA8_16_22$`Purging Screen`[is.na(TIDESDATA8_16_22$`Purging Screen`)] <- "Negative"
+```
+
+#### High Risk Only
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Just high risk = 1` into TIDESDATA8_16_22$`High Risk Only`
+TIDESDATA8_16_22$`High Risk Only` <- as.character(TIDESDATA8_16_22$`Just high risk = 1`)
+TIDESDATA8_16_22$`High Risk Only`[TIDESDATA8_16_22$`Just high risk = 1` == "1"] <- "Positive"
+```
+
+```{r}
+## Recoding TIDESDATA8_16_22$`High Risk Only`
+TIDESDATA8_16_22$`High Risk Only`[is.na(TIDESDATA8_16_22$`High Risk Only`)] <- "Negative"
+```
+
+#### Eating Disorder Positive Screen
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Just ED+ = 1` into TIDESDATA8_16_22$`Eating Disorder Positive`
+TIDESDATA8_16_22$`Eating Disorder Positive` <- as.character(TIDESDATA8_16_22$`Just ED+ = 1`)
+TIDESDATA8_16_22$`Eating Disorder Positive`[TIDESDATA8_16_22$`Just ED+ = 1` == "1"] <- "Positive"
+```
+
+```{r}
+## Recoding TIDESDATA8_16_22$`Eating Disorder Positive` into TIDESDATA8_16_22$`Eating Disorder Positive`
+TIDESDATA8_16_22$`Eating Disorder Positive` <- TIDESDATA8_16_22$`Eating Disorder Positive`
+TIDESDATA8_16_22$`Eating Disorder Positive`[is.na(TIDESDATA8_16_22$`Eating Disorder Positive`)] <- "Negative"
+```
+
+#### More Recoding
+
+```{r}
+## Recoding TIDESDATA8_16_22$`High Risk (=1) Vs ED Positive (=2) Vs No Known Risk (=0)` into TIDESDATA8_16_22$`Screen Results`
+TIDESDATA8_16_22$`Screen Results` <- as.character(TIDESDATA8_16_22$`High Risk (=1) Vs ED Positive (=2) Vs No Known Risk (=0)`)
+TIDESDATA8_16_22$`Screen Results`[TIDESDATA8_16_22$`High Risk (=1) Vs ED Positive (=2) Vs No Known Risk (=0)` == "0"] <- "No Known Risk"
+```
+
+```{r}
+TIDESDATA8_16_22$`Screen Results`[TIDESDATA8_16_22$`High Risk (=1) Vs ED Positive (=2) Vs No Known Risk (=0)` == "1"] <- "High Risk"
+```
+
+```{r}
+TIDESDATA8_16_22$`Screen Results`[TIDESDATA8_16_22$`High Risk (=1) Vs ED Positive (=2) Vs No Known Risk (=0)` == "2"] <- "Eating Disorder Positive"
+```
+
+### Renaming a Column
+
+```{r}
+names(TIDESDATA8_16_22)[names(TIDESDATA8_16_22) == 'SnapChat Houurs'] <- 'Snapchat Hours'
+```
+
+```{r}
+names(TIDESDATA8_16_22)[names(TIDESDATA8_16_22) == 'CDAD Phy'] <- 'CDAS Physical'
+```
+
+# \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+# Drop Columns & New Data Set
+
+```{r}
+df <- TIDESDATA8_16_22[ -c(2:8) ]
+```
+
+```{r}
+analysis1 <- read.csv(file = 'tb1.csv')
+```
+
+# \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+# Analysis
+
+### View "analysis1"
+
+```{r}
+analysis1
+```
+
+```{r}
+analysis1[c(5, 7:10, 12, 17:19), 1:9]
+```
+
+### Turning the above filter into its own dataframe for future data visuilization
+
+```{r}
+analysis2 <- analysis1[c(5, 7:10, 12, 17:19), 1:9]
+```
+
+# \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+# Graphs
+
+```{r}
+library(ggplot2)
+```
+
+### Average PHQ-9 Score By Eating Disorder Screen Classification
+
+```{r}
+ggplot(df) +
+ aes(x = `Screen Results`, y = `PHQ 9 score`, colour = `Screen Results`) +
+ geom_boxplot(fill = "#112446") +
+ scale_color_hue(direction = 1) +
+ labs(x = " ", y = "Average PHQ-9 Score", title = "Average PHQ-9 Score By Eating Disorder Screen Classification", 
+ color = "Classification") +
+ theme_linedraw()
+```
+
+### Average GAD-7 Score By Eating Disorder Screen Classification
+
+```{r}
+ggplot(df) +
+ aes(x = `Screen Results`, y = `GAD 7 score`, colour = `Screen Results`) +
+ geom_boxplot(fill = "#112446") +
+ scale_color_hue(direction = 1) +
+ labs(x = " ", y = "Average GAD-7 Score", title = "Average GAD-7 Score By Eating Disorder Screen Classification", 
+ color = "Classification") +
+ theme_linedraw()
+```
+
+### Average CDAS-Physical Score By Eating Disorder Screen Classification
+
+```{r}
+ggplot(df) +
+ aes(x = `Screen Results`, y = `CDAS Physical`, colour = `Screen Results`) +
+ geom_boxplot(fill = "#112446") +
+ scale_color_hue(direction = 1) +
+ labs(x = " ", y = "Average CDAS-Physical Score", title = "Average CDAS-Physical Score By Eating Disorder Screen Classification", 
+ color = "Classification") +
+ theme_linedraw()
+```
+
+### Average CDAS-Psych Score By Eating Disorder Screen Classification
+
+```{r}
+ggplot(df) +
+ aes(x = `Screen Results`, y = `CDAS Psych`, colour = `Screen Results`) +
+ geom_boxplot(fill = "#112446") +
+ scale_color_hue(direction = 1) +
+ labs(x = " ", y = "Average CDAS-Psych Score", title = "Average CDAS-Psych Score By Eating Disorder Screen Classification", 
+ color = "Classification") +
+ theme_linedraw()
+```
+
+### Average CDAS-Total Score By Eating Disorder Screen Classification
+
+```{r}
+ggplot(df) +
+ aes(x = `Screen Results`, y = `CDAS Total`, colour = `Screen Results`) +
+ geom_boxplot(fill = "#112446") +
+ scale_color_hue(direction = 1) +
+ labs(x = " ", y = "Average CDAS-Total Score", title = "Average CDAS-Total Score By Eating Disorder Screen Classification", 
+ color = "Classification") +
+ theme_linedraw()
+```
+
+### Average Snapchat Usage By Eating Disorder Screen Classification
+
+```{r}
+ggplot(df) +
+ aes(x = `Screen Results`, y = `Snapchat Hours`, colour = `Screen Results`) +
+ geom_boxplot(fill = "#112446") +
+ scale_color_hue(direction = 1) +
+ labs(x = " ", y = "Average Snapchat Usage", title = "Average Snapchat Usage By Eating Disorder Screen Classification", 
+ color = "Classification") +
+ theme_linedraw()
+```
+
+### Average Social Media Usage By Eating Disorder Screen Classification
+
+```{r}
+ggplot(df) +
+ aes(x = `Screen Results`, y = `Avg Hours`, colour = `Screen Results`) +
+ geom_boxplot(fill = "#112446") +
+ scale_color_hue(direction = 1) +
+ labs(x = " ", y = "Average Social Media Usage", title = "Average Social Media Usage By Eating Disorder Screen Classification", 
+ color = "Classification") +
+ theme_linedraw()
+```
+
+### Test Graphs
+
+
+```
+
